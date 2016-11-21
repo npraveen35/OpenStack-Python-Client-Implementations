@@ -5,7 +5,7 @@ My Working Environment: On Ubuntu platform, created a virtualenv & installed ope
 
     sudo apt-get install python-pip -y
     sudo pip install --upgrade pip # my version is 9.0.1
-    sudo pip install virtualenv # my version is 15.0.1
+    sudo pip install virtualenv # my version is 15.1.0
     virtualenv api_env
     cd api_env
     source bin/activate
