@@ -1,0 +1,194 @@
+[root@controller ~(keystone_admin)]#chmod +x create_topology
+[root@controller ~(keystone_admin)]#chmode 777 create_topology
+[root@controller ~(keystone_admin)]#chmod +x delete_topology
+[root@controller ~(keystone_admin)]#chmode 777 delete_topology
+[root@controller ~(keystone_admin)]# ./create_topology
+Created a new network:
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2016-11-22T06:40:30                  |
+| description               |                                      |
+| id                        | a7533eef-ef13-43fc-879e-c7e55dbd0daf |
+| ipv4_address_scope        |                                      |
+| ipv6_address_scope        |                                      |
+| is_default                | False                                |
+| mtu                       | 1450                                 |
+| name                      | public                               |
+| provider:network_type     | vxlan                                |
+| provider:physical_network |                                      |
+| provider:segmentation_id  | 1038                                 |
+| router:external           | True                                 |
+| shared                    | True                                 |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tags                      |                                      |
+| tenant_id                 | 1328d432420e47bfb55941961221a8ce     |
+| updated_at                | 2016-11-22T06:40:31                  |
++---------------------------+--------------------------------------+
+Created a new subnet:
++-------------------+--------------------------------------------------+
+| Field             | Value                                            |
++-------------------+--------------------------------------------------+
+| allocation_pools  | {"start": "172.27.3.200", "end": "172.27.3.215"} |
+| cidr              | 172.27.3.0/24                                    |
+| created_at        | 2016-11-22T06:40:32                              |
+| description       |                                                  |
+| dns_nameservers   |                                                  |
+| enable_dhcp       | False                                            |
+| gateway_ip        | 172.27.3.1                                       |
+| host_routes       |                                                  |
+| id                | 21e50c79-4975-4e32-bf93-919958ac9457             |
+| ip_version        | 4                                                |
+| ipv6_address_mode |                                                  |
+| ipv6_ra_mode      |                                                  |
+| name              | public-subnet                                    |
+| network_id        | a7533eef-ef13-43fc-879e-c7e55dbd0daf             |
+| subnetpool_id     |                                                  |
+| tenant_id         | 1328d432420e47bfb55941961221a8ce                 |
+| updated_at        | 2016-11-22T06:40:32                              |
++-------------------+--------------------------------------------------+
+Created a new network:
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | True                                 |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2016-11-22T06:40:38                  |
+| description               |                                      |
+| id                        | 83d496a4-cfb5-458f-a3f8-2223795c8ca2 |
+| ipv4_address_scope        |                                      |
+| ipv6_address_scope        |                                      |
+| mtu                       | 1450                                 |
+| name                      | private-net1                         |
+| provider:network_type     | vxlan                                |
+| provider:physical_network |                                      |
+| provider:segmentation_id  | 1065                                 |
+| router:external           | False                                |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tags                      |                                      |
+| tenant_id                 | 1328d432420e47bfb55941961221a8ce     |
+| updated_at                | 2016-11-22T06:40:38                  |
++---------------------------+--------------------------------------+
+Created a new subnet:
++-------------------+--------------------------------------------+
+| Field             | Value                                      |
++-------------------+--------------------------------------------+
+| allocation_pools  | {"start": "10.0.0.2", "end": "10.0.0.254"} |
+| cidr              | 10.0.0.0/24                                |
+| created_at        | 2016-11-22T06:40:39                        |
+| description       |                                            |
+| dns_nameservers   | 8.8.8.8                                    |
+| enable_dhcp       | True                                       |
+| gateway_ip        | 10.0.0.1                                   |
+| host_routes       |                                            |
+| id                | 7b00093d-16b5-45f9-ad47-f5613f2e286c       |
+| ip_version        | 4                                          |
+| ipv6_address_mode |                                            |
+| ipv6_ra_mode      |                                            |
+| name              | private-subnet1                            |
+| network_id        | 83d496a4-cfb5-458f-a3f8-2223795c8ca2       |
+| subnetpool_id     |                                            |
+| tenant_id         | 1328d432420e47bfb55941961221a8ce           |
+| updated_at        | 2016-11-22T06:40:39                        |
++-------------------+--------------------------------------------+
+Created a new router:
++-------------------------+--------------------------------------+
+| Field                   | Value                                |
++-------------------------+--------------------------------------+
+| admin_state_up          | True                                 |
+| availability_zone_hints |                                      |
+| availability_zones      |                                      |
+| description             |                                      |
+| distributed             | False                                |
+| external_gateway_info   |                                      |
+| ha                      | False                                |
+| id                      | c45c55de-1ee0-4368-a811-e4febc6dfd92 |
+| name                    | router1                              |
+| routes                  |                                      |
+| status                  | ACTIVE                               |
+| tenant_id               | 1328d432420e47bfb55941961221a8ce     |
++-------------------------+--------------------------------------+
+Added interface fc60155e-00b9-464c-918f-f360d812a204 to router router1.
+Set gateway for router router1
+--2016-11-22 12:10:54--  http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+Resolving download.cirros-cloud.net (download.cirros-cloud.net)... 64.90.42.85, 2607:f298:6:a036::bd6:a72a
+Connecting to download.cirros-cloud.net (download.cirros-cloud.net)|64.90.42.85|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13287936 (13M) [text/plain]
+Saving to: ‘cirros-0.3.4-x86_64-disk.img’
+
+100%[==============================================================================================>] 13,287,936   451KB/s   in 42s
+
+2016-11-22 12:11:41 (308 KB/s) - ‘cirros-0.3.4-x86_64-disk.img’ saved [13287936/13287936]
+
+[=============================>] 100%
++------------------+--------------------------------------+
+| Property         | Value                                |
++------------------+--------------------------------------+
+| architecture     | x86_64                               |
+| checksum         | ee1eca47dc88f4879d8a229cc70a07c6     |
+| container_format | bare                                 |
+| created_at       | 2016-11-22T06:41:48Z                 |
+| disk_format      | qcow2                                |
+| id               | 83cb2ed3-7050-413f-a6cb-8084bd28824e |
+| min_disk         | 0                                    |
+| min_ram          | 0                                    |
+| name             | cirros_0.3.4                         |
+| owner            | 1328d432420e47bfb55941961221a8ce     |
+| protected        | False                                |
+| size             | 13287936                             |
+| status           | active                               |
+| tags             | []                                   |
+| updated_at       | 2016-11-22T06:41:48Z                 |
+| virtual_size     | None                                 |
+| visibility       | public                               |
++------------------+--------------------------------------+
++--------------------------------------+-----------------------------------------------------+
+| Property                             | Value                                               |
++--------------------------------------+-----------------------------------------------------+
+| OS-DCF:diskConfig                    | MANUAL                                              |
+| OS-EXT-AZ:availability_zone          |                                                     |
+| OS-EXT-SRV-ATTR:host                 | -                                                   |
+| OS-EXT-SRV-ATTR:hypervisor_hostname  | -                                                   |
+| OS-EXT-SRV-ATTR:instance_name        | instance-00000006                                   |
+| OS-EXT-STS:power_state               | 0                                                   |
+| OS-EXT-STS:task_state                | scheduling                                          |
+| OS-EXT-STS:vm_state                  | building                                            |
+| OS-SRV-USG:launched_at               | -                                                   |
+| OS-SRV-USG:terminated_at             | -                                                   |
+| accessIPv4                           |                                                     |
+| accessIPv6                           |                                                     |
+| adminPass                            | 6Cic5CjMxtXs                                        |
+| config_drive                         |                                                     |
+| created                              | 2016-11-22T06:41:59Z                                |
+| flavor                               | m1.tiny (1)                                         |
+| hostId                               |                                                     |
+| id                                   | 45e1d1b5-4045-4728-857b-8a0483e7e470                |
+| image                                | cirros_0.3.4 (83cb2ed3-7050-413f-a6cb-8084bd28824e) |
+| key_name                             | -                                                   |
+| metadata                             | {}                                                  |
+| name                                 | test-vm1                                            |
+| os-extended-volumes:volumes_attached | []                                                  |
+| progress                             | 0                                                   |
+| security_groups                      | default                                             |
+| status                               | BUILD                                               |
+| tenant_id                            | 1328d432420e47bfb55941961221a8ce                    |
+| updated                              | 2016-11-22T06:41:59Z                                |
+| user_id                              | d6ee77fc3653461ba0bcbbe455c66449                    |
++--------------------------------------+-----------------------------------------------------+
+[root@controller ~(keystone_admin)]#
+[root@controller ~(keystone_admin)]# ./delete_topology
+Request to delete server test-vm1 has been accepted.
+Removed interface from router router1.
+Removed gateway from router router1
+Deleted router: router1
+Deleted network: private-net1
+Deleted network: public
+[root@controller ~(keystone_admin)]#
