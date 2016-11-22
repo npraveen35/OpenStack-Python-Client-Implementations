@@ -1,4 +1,5 @@
 # This script is an example usage of python-keystoneclient
+# Author: Praveen N
 
 from keystoneclient.v2_0 import client as ksclient
 from config import USER,PWD,TENANT,AUTH_URL, print_table
