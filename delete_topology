@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#DELETE/CLEAR A NETWORK TOPOLOGY
+#This bash script deletes network topology created by create_topology script
+#AUTHOR: PRAVEEN N
+
+nova delete test-vm1
+sleep 5s
+
+neutron router-interface-delete router1 private-subnet1
+
+neutron router-gateway-clear router1 public
+
+neutron router-delete router1
+
+neutron net-delete private-net1
+sleep 5s
+
+neutron net-delete public

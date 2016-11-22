@@ -1,0 +1,46 @@
+#!/bin/bash
+# ********************************************************************
+#TOPOLOGY includes below 
+#1 Public Network: public, with public-subnet
+#1 Private Network: private-net1, with private-subnet1
+#1 Router: router1
+#1 Instance: test-vm1
+#
+#Ensure you source your shell env variables before running this script.
+# 
+#AUTHOR: PRAVEEN N
+#**********************************************************************
+
+#CREATE A NETWORK TOPOLOGY
+
+#NEUTRON
+neutron net-create public --router:external --shared
+
+neutron subnet-create public 172.27.3.0/24 --name public-subnet --allocation-pool start=172.27.3.200,end=172.27.3.215 --disable-dhcp --gateway 172.27.3.1
+sleep 4s
+
+neutron net-create private-net1
+
+neutron subnet-create --name private-subnet1 --dns-nameserver 8.8.8.8 private-net1 10.0.0.0/24
+sleep 4s
+
+neutron router-create router1
+sleep 4s
+
+neutron router-interface-add router1 private-subnet1
+
+neutron router-gateway-set router1 public
+
+#GLANCE
+wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+sleep 5s
+
+glance image-create --name "cirros_0.3.4" --file cirros-0.3.4-x86_64-disk.img --disk-format qcow2 --container-format bare --visibility public --progress --property architecture=x86_64
+sleep 5s
+
+#NOVA
+nova boot --image `nova image-list | awk '/ cirros_0.3.4 / {print $2}'` --flavor 1 --nic net-id=`neutron net-list | awk '/ private-net1 / {print $2}'` test-vm1
+sleep 5s
+
+# nova boot --image cirros --flavor 1 --availability-zone=nova:openstack-aio --key-name kabali-key --nic net-id=`neutron net-list | awk '/ private-net1 / {print $2}'` aio-vm1
+# nova boot --image cirros --flavor 1 --availability-zone=nova:openstack-compute --key-name kabali-key --nic net-id=`neutron net-list | awk '/ private-net1 / {print $2}'` compute-vm1
