@@ -1,0 +1,3 @@
+http://docs.openstack.org/developer/python-keystoneclient/using-api-v2.html
+https://www.ibm.com/developerworks/cloud/library/cl-openstack-pythonapis/
+http://stackoverflow.com/questions/20034143/getting-auth-token-from-keystone-in-horizon
